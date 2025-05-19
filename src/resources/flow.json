@@ -1,0 +1,30 @@
+[
+  {
+    "type": "debit",
+    "comment": "Debit from acc 1",
+    "identifier": 1,
+    "amount": 50.0,
+    "targetAccountNumber": 1,
+    "effect": false,
+    "date": "2025-05-21"
+  },
+  {
+    "type": "credit",
+    "comment": "Credit to acc 2",
+    "identifier": 2,
+    "amount": 150.0,
+    "targetAccountNumber": 2,
+    "effect": false,
+    "date": "2025-05-21"
+  },
+  {
+    "type": "transfer",
+    "comment": "Transfer from 1 to 2",
+    "identifier": 3,
+    "amount": 50.0,
+    "originAccountNumber": 1,
+    "targetAccountNumber": 2,
+    "effect": false,
+    "date": "2025-05-21"
+  }
+]

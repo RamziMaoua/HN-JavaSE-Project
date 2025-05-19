@@ -1,5 +1,11 @@
 package bankapp.main;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,6 +24,9 @@ import bankapp.component.Debit;
 import bankapp.component.Flow;
 import bankapp.component.SavingsAccount;
 import bankapp.component.Transfer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
 
@@ -45,6 +54,8 @@ public class Main {
 				
 				//-------- 1.3.4 Creation of flow array
 				ArrayList<Flow> flows = generateFlows(accountCollection);	
+				
+				List<Flow> flowsJSON = loadFlowsFromJson("C:\\Users\\Ramzi Maoua\\eclipse-workspace\\RMBBank\\src\\resources\\flow.json");
 				
 				//-------- 1.3.5 Apply Flow to accounts
 				applyFlowsToAccounts(flows, accountMap);
@@ -180,6 +191,19 @@ public class Main {
 		    );
 		}
 		
+		
+		//--------2.1 JSON file of flows
+		
+		public static List<Flow> loadFlowsFromJson(String filePath) {
+		    ObjectMapper mapper = new ObjectMapper();
+
+		    try (BufferedReader reader = Files.newBufferedReader(Paths.get(filePath))) {
+		        return mapper.readValue(reader, new TypeReference<List<Flow>>() {});
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		        return List.of();  // return empty list on failure
+		    }
+		}
 		
 		
 		
