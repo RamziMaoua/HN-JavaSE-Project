@@ -9,9 +9,10 @@ import bankapp.component.Client;
 public class Main {
 
 	public static void main(String[] args) {
+		
 		//-------- 1.1.2 Creation of the main class for tests
 				Scanner scanner = new Scanner(System.in);
-				System.out.println("How many clients will use our bank ? \t" );
+				System.out.println("How many clients will use our bank ?" );
 				int numberOfClients = scanner.nextInt();
 				scanner.close();
 				
@@ -33,16 +34,13 @@ public class Main {
 			return collection;
 		}
 		
-		public static ArrayList<String>  convertClientCollectionToString(List<Client> clients) {
-			int numberOfClients = clients.size();
-			ArrayList<String> collectionToString = new ArrayList<>(numberOfClients);
-			for (int i = 0; i < numberOfClients; i++) {
-				collectionToString.add(i, (clients.get(i).toString()));
-			}
-			return collectionToString;	
+		public static void displayClients(List<Client> clients) {
+		    clients.stream()
+		           .map(Client::toString)
+		           .forEach(System.out::println);
 		}
 		
-		public static void displayClients(List<Client> clients) {
-			System.out.println(convertClientCollectionToString(clients));
-		}
+		
+		
+		
 }

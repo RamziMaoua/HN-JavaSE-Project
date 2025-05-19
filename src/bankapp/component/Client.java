@@ -49,6 +49,6 @@ public class Client {
 	
 	
 	public String toString() {
-		return "(Client number: " + getClientNumber() + ", Name: " + getName() + ", First Name: " + getFirstName() + ")" ;
+		return "Client number: " + getClientNumber() + ", Name: " + getName() + ", First Name: " + getFirstName();
 	}
 }
