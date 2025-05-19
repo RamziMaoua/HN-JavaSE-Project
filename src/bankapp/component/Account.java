@@ -54,12 +54,9 @@ public abstract class Account {
 		return numberOfAccounts;
 	}
 
-	public static void setNumberOfAccounts(int numberOfAccounts) {
-		Account.numberOfAccounts = numberOfAccounts;
-	}
 	
 	public String toString() {
-		return "Account number : " + getAccountNumber() +  ", Label : " + getLabel() + ", " + "Client : " +  client.toString() + "Balance : " + getBalance() ;
+		return "Account number : " + getAccountNumber() +  ", Label : " + getLabel() + ", " + "Client : (" +  client.toString() + "), Balance : " + getBalance() ;
 	}
 
 	

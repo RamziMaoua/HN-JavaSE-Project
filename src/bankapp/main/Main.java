@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import bankapp.component.Account;
 import bankapp.component.Client;
+import bankapp.component.CurrentAccount;
+import bankapp.component.SavingsAccount;
 
 public class Main {
 
@@ -20,10 +23,16 @@ public class Main {
 				clientCollection = generateClientCollection(numberOfClients);
 				displayClients(clientCollection);
 				
+				
+				
+				//-------- 1.2.3
+				ArrayList<Account> accountCollection = generateAccountCollection(clientCollection);
+				displayAccounts(accountCollection);
+				
 	}
 	
 	
-	//----------- 1.1.2 Creation of the main class for tests
+		//----------- 1.1.2 Creation of the main class for tests
 		public static ArrayList<Client> generateClientCollection(int numberOfClients) {
 			ArrayList<Client> collection = new ArrayList<Client>(numberOfClients);
 			
@@ -39,6 +48,35 @@ public class Main {
 		           .map(Client::toString)
 		           .forEach(System.out::println);
 		}
+		
+		
+		
+		//----------- 1.2.3 Creation of the table account
+		public static ArrayList<Account> generateAccountCollection(List<Client> clients) {
+			
+			int numberOfClients = Client.getNumberOfClients();
+			
+			ArrayList<Account> collection = new ArrayList<Account>(numberOfClients * 2);
+			
+			for (Client c : clients) {
+				collection.addLast(new CurrentAccount("Current Account", c));
+				collection.getLast().setBalance(0);
+				collection.addLast(new SavingsAccount("Savings Account", c));
+				collection.getLast().setBalance(0);
+			}
+			
+			return collection;
+		}
+		
+		public static void displayAccounts(List<Account> accounts) {
+			accounts.stream()
+					.map(Account::toString)
+					.forEach(System.out::println);
+		}
+		
+		
+		
+		
 		
 		
 		
