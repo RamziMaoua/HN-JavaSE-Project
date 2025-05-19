@@ -47,7 +47,7 @@ public class Client {
 		return numberOfClients;
 	}
 	
-	
+	@Override
 	public String toString() {
 		return "Client number: " + getClientNumber() + ", Name: " + getName() + ", First Name: " + getFirstName();
 	}
