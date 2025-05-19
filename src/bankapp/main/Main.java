@@ -1,8 +1,10 @@
 package bankapp.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import bankapp.component.Account;
 import bankapp.component.Client;
@@ -25,10 +27,13 @@ public class Main {
 				
 				
 				
-				//-------- 1.2.3
+				//-------- 1.2.3 Creation of the table account
 				ArrayList<Account> accountCollection = generateAccountCollection(clientCollection);
 				displayAccounts(accountCollection);
 				
+				//-------- 1.3.1 Adaptation of the table of accounts
+				HashMap<Integer, Account> accountMap =generateAccountHashTable(accountCollection);
+			
 	}
 	
 	
@@ -72,6 +77,20 @@ public class Main {
 			accounts.stream()
 					.map(Account::toString)
 					.forEach(System.out::println);
+		}
+		
+
+		//-------- 1.3.1 Adaptation of the table of accounts
+		public static HashMap<Integer, Account> generateAccountHashTable(List<Account> accounts) {
+			HashMap<Integer, Account> accountMap = new HashMap<>();
+			return accounts.stream()
+					.collect(Collectors.toMap(
+							Account::getAccountNumber,
+							account -> account,
+	                       (a1, a2) -> a1,     
+	                       HashMap::new 
+					)) ;
+			
 		}
 		
 		
