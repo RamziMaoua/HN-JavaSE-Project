@@ -4,6 +4,11 @@ package bankapp.component;
 //-------1.3.3 Creation of the Transfer class
 public class Transfer extends Flow {
 
+	
+	public Transfer() {
+	        super(null, 0, 0.0, 0, null);
+	  }
+	   
 	private int originAccountNumber;
 	public Transfer(String comment, int identifier, double amount, int targetAccountNumber, String date, int originAccountNumber) {
 		super(comment, identifier, amount, targetAccountNumber, date); 

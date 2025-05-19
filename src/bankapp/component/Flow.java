@@ -1,10 +1,19 @@
 package bankapp.component;
 
-
-
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 //-------1.3.2 Creation of the Flow class
-
+@JsonTypeInfo(
+	    use = JsonTypeInfo.Id.NAME,
+	    include = JsonTypeInfo.As.PROPERTY,
+	    property = "type"
+	)
+	@JsonSubTypes({
+	    @JsonSubTypes.Type(value = Debit.class, name = "debit"),
+	    @JsonSubTypes.Type(value = Credit.class, name = "credit"),
+	    @JsonSubTypes.Type(value = Transfer.class, name = "transfer")
+	})
 public abstract class Flow {
 	private String comment;
 	private int identifier;

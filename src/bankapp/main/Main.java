@@ -25,6 +25,8 @@ import bankapp.component.Flow;
 import bankapp.component.SavingsAccount;
 import bankapp.component.Transfer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -49,19 +51,20 @@ public class Main {
 				displayAccounts(accountCollection);
 				
 				//-------- 1.3.1 Adaptation of the table of accounts
-				HashMap<Integer, Account> accountMap =generateAccountHashTable(accountCollection);
+				HashMap<Integer, Account> accountMap = generateAccountHashTable(accountCollection);
 			
 				
 				//-------- 1.3.4 Creation of flow array
 				ArrayList<Flow> flows = generateFlows(accountCollection);	
 				
-				List<Flow> flowsJSON = loadFlowsFromJson("C:\\Users\\Ramzi Maoua\\eclipse-workspace\\RMBBank\\src\\resources\\flow.json");
 				
 				//-------- 1.3.5 Apply Flow to accounts
 				applyFlowsToAccounts(flows, accountMap);
 				displayAccountsSortedByBalance(accountMap);
 
 				
+				//-------- 2.1 JSON file of flows
+				List<Flow> flowsJSON = loadFlowsFromJson("src\\resources\\flow.json");
 			
 	}
 	
@@ -164,7 +167,7 @@ public class Main {
 		    }
 
 		    // Transfer €50 from account 1 to account 2
-		    flows.add(new Transfer("Transfer from acc 1 to acc 2", id++, 1050.0, 2, date, 1));
+		    flows.add(new Transfer("Transfer from acc 1 to acc 2", id++, 50.0, 2, date, 1));
 
 		    return flows;
 		}
@@ -193,7 +196,7 @@ public class Main {
 		
 		
 		//--------2.1 JSON file of flows
-		
+
 		public static List<Flow> loadFlowsFromJson(String filePath) {
 		    ObjectMapper mapper = new ObjectMapper();
 
@@ -201,7 +204,7 @@ public class Main {
 		        return mapper.readValue(reader, new TypeReference<List<Flow>>() {});
 		    } catch (IOException e) {
 		        e.printStackTrace();
-		        return List.of();  // return empty list on failure
+		        return new ArrayList<>();  // return empty list on failure
 		    }
 		}
 		

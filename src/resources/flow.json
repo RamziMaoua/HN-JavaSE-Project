@@ -10,20 +10,64 @@
   },
   {
     "type": "credit",
-    "comment": "Credit to acc 2",
+    "comment": "Credit to current acc",
     "identifier": 2,
-    "amount": 150.0,
+    "amount": 100.5,
+    "targetAccountNumber": 1,
+    "effect": false,
+    "date": "2025-05-21"
+  },
+  {
+    "type": "credit",
+    "comment": "Credit to current acc",
+    "identifier": 3,
+    "amount": 100.5,
+    "targetAccountNumber": 3,
+    "effect": false,
+    "date": "2025-05-21"
+  },
+  {
+    "type": "credit",
+    "comment": "Credit to current acc",
+    "identifier": 4,
+    "amount": 100.5,
+    "targetAccountNumber": 5,
+    "effect": false,
+    "date": "2025-05-21"
+  },{
+    "type": "credit",
+    "comment": "Credit to savings acc",
+    "identifier": 5,
+    "amount": 1500.0,
     "targetAccountNumber": 2,
     "effect": false,
     "date": "2025-05-21"
   },
   {
+    "type": "credit",
+    "comment": "Credit to savings acc",
+    "identifier": 6,
+    "amount": 1500.0,
+    "targetAccountNumber": 4,
+    "effect": false,
+    "date": "2025-05-21"
+  },
+  {
+    "type": "credit",
+    "comment": "Credit to savings acc",
+    "identifier": 7,
+    "amount": 1500.0,
+    "targetAccountNumber": 6,
+    "effect": false,
+    "date": "2025-05-21"
+  },
+  {
     "type": "transfer",
-    "comment": "Transfer from 1 to 2",
-    "identifier": 3,
+    "comment": "Transfer from acc 1 to acc 2",
+    "identifier": 8,
     "amount": 50.0,
-    "originAccountNumber": 1,
     "targetAccountNumber": 2,
+    "originAccountNumber": 1,
     "effect": false,
     "date": "2025-05-21"
   }
